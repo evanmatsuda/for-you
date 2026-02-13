@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>for you 🤍</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      text-align: center;
+      overflow: hidden;
+      transition: background 0.8s ease;
+      color: #000000;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-weight: 800;
+      font-size: 30px;
+      color: #000000;
+    }
+
+    p {
+      font-weight: 700;
+      font-size: 19px;
+      color: #000000;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 28px;
+      font-size: 16px;
+      border-radius: 25px;
+      border: 1.5px solid black;
+      background: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 700;
+    }
+
+    button:hover {
+      background: black;
+      color: white;
+    }
+
+    .fade {
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .bg-rose {
+      position: absolute;
+      font-size: 26px;
+      opacity: 0.3;
+      animation: floatSlow 15s linear infinite;
+    }
+
+    @keyframes floatSlow {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-10vh); }
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 26px;
+      animation: floatUp 4s linear forwards;
+      opacity: 0.95;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-100vh); opacity: 0; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container" id="content">
+    <h1>will you be my valentine? 💕</h1>
+    <button onclick="sayYes()">yes ❤️</button>
+  </div>
+
+  <script>
+    // Create background roses
+    for (let i = 0; i < 25; i++) {
+      let bgRose = document.createElement("div");
+      bgRose.classList.add("bg-rose");
+      bgRose.innerText = "🌹";
+      bgRose.style.left = Math.random() * 100 + "vw";
+      bgRose.style.animationDuration = (12 + Math.random() * 8) + "s";
+      bgRose.style.fontSize = (22 + Math.random() * 10) + "px";
+      document.body.appendChild(bgRose);
+    }
+
+    function sayYes() {
+      document.body.style.background = "#ffd6e7";
+
+      document.getElementById("content").innerHTML = `
+        <div class="fade">
+          <h1>YUHHHHHHH you better say yes ❣️</h1>
+          <p>I love you so much, thank you for being you my sweet baby.</p>
+          <p>happy valentine’s day 🥰😘</p>
+        </div>
+      `;
+
+      for (let i = 0; i < 20; i++) {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerText = "❣️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "-20px";
+        heart.style.fontSize = (24 + Math.random() * 16) + "px";
+        heart.style.animationDuration = (3 + Math.random() * 2) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 4000);
+      }
+    }
+  </script>
+
+</body>
+</html>
