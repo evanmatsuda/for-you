@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For You 🤍</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      text-align: center;
+      overflow: hidden;
+      transition: background 0.8s ease;
+    }
+
+    .container {
+      transition: all 0.4s ease;
+    }
+
+    h1 {
+      font-weight: 500;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 22px;
+      font-size: 16px;
+      border-radius: 20px;
+      border: 1px solid black;
+      background: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: black;
+      color: white;
+    }
+
+    .fade {
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .apple {
+      position: absolute;
+      font-size: 24px;
+      animation: floatUp 4s linear forwards;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0);
+        opacity: 0.9;
+      }
+      to {
+        transform: translateY(-100vh);
+        opacity: 0;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container" id="content">
+    <h1>Will you be my Valentine? ❤️</h1>
+    <button onclick="sayYes()">Yes ‼️</button>
+  </div>
+
+  <script>
+    function sayYes() {
+      document.body.style.background = "#ffd6e7"; // soft pink
+
+      document.getElementById("content").innerHTML = `
+        <div class="fade">
+          <h1>I was hoping you'd say that. 🍎</h1>
+          <p>You’ve always been my favorite person.</p>
+          <p>Happy Valentine’s Day 🤍</p>
+        </div>
+      `;
+
+      // Create floating apples
+      for (let i = 0; i < 15; i++) {
+        let apple = document.createElement("div");
+        apple.classList.add("apple");
+        apple.innerText = "❤️";
+        apple.style.left = Math.random() * 100 + "vw";
+        apple.style.bottom = "-20px";
+        apple.style.fontSize = (20 + Math.random() * 20) + "px";
+        apple.style.animationDuration = (3 + Math.random() * 2) + "s";
+        document.body.appendChild(apple);
+
+        setTimeout(() => {
+          apple.remove();
+        }, 4000);
+      }
+    }
+  </script>
+</body>
+</html>
